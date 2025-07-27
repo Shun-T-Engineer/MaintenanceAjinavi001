@@ -8,4 +8,8 @@ public interface RestaurantRepository {
 	void add(Restaurant restaurant);
 	
 	List<Restaurant> selectByNameWildcard(String restaurantName);
+	
+	void update(Restaurant restaurant);
+	
+	void destoroy(Restaurant restaurant);
 }

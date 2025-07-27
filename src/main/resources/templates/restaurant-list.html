@@ -21,10 +21,27 @@
 
 		<table class="restaurant-list">
 			<tr>
-				<th>店舗ID</th><th>店舗名</th><th>キャッチフレーズ</th><th>レビュー数</th>
+				<th colspan="2">編集</th><th>店舗ID</th><th>店舗名</th><th>キャッチフレーズ</th><th>レビュー数</th>
 			</tr>
 
 			<tr th:each="restaurant : ${restaurantList}">
+				<td>
+				   <form th:action="@{/edit-restaurant-form}" method="POST">
+						<input type="hidden" th:value="${restaurant.restaurantId}" name="restaurantId"}>
+						<input type="hidden" th:value="${restaurant.restaurantName}" name="restaurantName">
+						<input type="hidden" th:value="${restaurant.catchPhrase}" name="catchPhrase">
+						<input type="submit" value="編集" class="btn">
+					</form>
+				</td>
+				<td>
+					<form th:action="@{/delete-restaurant}" method="POST">
+						<input type="hidden" th:value="${restaurant.restaurantId}" name="restaurantId"}>
+						<input type="hidden" th:value="${restaurant.restaurantName}" name="restaurantName">
+						<input type="hidden" th:value="${restaurant.catchPhrase}" name="catchPhrase">
+						<input type="submit" value="削除" class="btn-disable" th:if="${restaurant.reviewCount}" disabled>
+						<input type="submit" value="削除" class="btn" th:if="!${restaurant.reviewCount}" >
+					</form>
+				</td>
 				<td th:text="${restaurant.restaurantId}"></td>
 				<td th:text="${restaurant.restaurantName}"></td>
 				<td th:text="${restaurant.catchPhrase}"></td>

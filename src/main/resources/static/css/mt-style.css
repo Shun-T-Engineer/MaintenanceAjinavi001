@@ -28,6 +28,14 @@ h2 {
 	cursor:pointer;
 }
 
+/* 非活性時のボタン */
+.btn-disable {
+	border: 2px solid brown;
+	padding: 4px 20px;
+	font-size: 20px;
+	color: brown;
+}
+
 .btn:hover {
   color: #fff;
   background: brown;

@@ -52,4 +52,24 @@ public class RestaurantRepositoryImp implements RestaurantRepository {
 		return restaurantList;
 	}
 
+	@Override
+	public void update(Restaurant restaurant) {
+		String sql =" UPDATE m_restaurant" +
+					        " SET restaurant_name = ?, catch_phrase = ?" +
+					        " WHERE restaurant_id = ? ";
+		
+		jdbcTemplate.update(sql, restaurant.getRestaurantName(), restaurant.getCatchPhrase(),
+											  restaurant.getRestaurantId());
+	}
+
+	@Override
+	public void destoroy(Restaurant restaurant) {
+		String sql=" DELETE FROM m_restaurant" +
+						   " WHERE restaurant_id = ?";
+		
+		jdbcTemplate.update(sql,restaurant.getRestaurantId());
+	}
+	
+		
+
 }

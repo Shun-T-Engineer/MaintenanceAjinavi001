@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>編集</title>
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+</head>
+<body>/head>
+	<body>
+
+		<h2>店舗編集</h2>
+		<br>
+		<form th:action="@{/edit-restaurant-confirm}" method="POST" th:object="${restaurantEditForm}">
+			【ID】
+			<p th:text="*{restaurantId}"></p>
+			<input type="hidden" th:field="*{restaurantId}"><br>
+			【店舗名】<br>
+			<input type="text" th:field="*{restaurantName}"><br>
+			<div th:if="${#fields.hasErrors('restaurantName')}" th:errors="*{restaurantName}"></div>
+			<br>
+			【キャッチフレーズ】<br>
+			<input type="text" th:field="*{catchPhrase}"><br>
+			<div th:if="${#fields.hasErrors('catchPhrase')}" th:errors="*{catchPhrase}"></div>
+			<br>
+			<input type="submit" value="編集" class="btn">
+		</form>
+
+		
+	</body>
+	</html>

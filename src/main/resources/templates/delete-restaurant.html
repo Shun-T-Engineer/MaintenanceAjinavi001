@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>店舗削除確認</title>
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+</head>
+<body>
+
+	<h2>店舗削除確認</h2>
+	
+			【ID】<br>
+			<p th:text="${restaurantEditForm.restaurantId}"></p>
+			【店舗名】<br>
+			<p th:text="${restaurantEditForm.restaurantName}"></p>
+			【キャッチフレーズ】<br>
+			<p th:text="${restaurantEditForm.catchPhrase}"></p>
+
+	<form th:action="@{/restaurant-delete}" method="POST" th:object="${restaurantEditForm}">
+		<input type="hidden" th:field="*{restaurantId}"><br>
+		<input type="hidden" th:field="*{restaurantName}">
+		<input type="hidden" th:field="*{catchPhrase}">
+		<input type="submit" value="削除" class="btn">
+	</form>
+	<form th:action="@{/restaurant-list}" method="GET" >
+		<input type="submit" value="戻る" class="btn">
+	</form>
+
+</body>
+</html>
